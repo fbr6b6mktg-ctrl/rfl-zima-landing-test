@@ -70,9 +70,9 @@
 
   $$('[data-price]').forEach(function (el) { el.innerHTML = rub(C.priceEarly); });
 
-  // Бегущая строка: список дублируется, чтобы прокрутка шла без шва
-  var tick = C.hero.ticker.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
-  $('#ticker').innerHTML = tick + tick;
+  // Короткие факты: строка под первым экраном и вертикальная полоса слева
+  $('#facts').innerHTML = C.hero.facts.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
+  $('#side-strip').innerHTML = C.hero.facts.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
 
   // Обратный отсчёт до конца приёма заявок
   var cdEnd = C.discountActive && C.countdownTo ? new Date(C.countdownTo).getTime() : NaN;
