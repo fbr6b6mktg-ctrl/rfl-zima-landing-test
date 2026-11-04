@@ -220,7 +220,7 @@ p, h1, h2, h3 { margin: 0; }
     border-width: 3px; box-shadow: 0 20px 50px rgba(0, 0, 0, .55);
   }
   .hero__badge {
-    display: grid; gap: 4px; position: absolute; top: 24px; right: -18px;
+    display: grid; gap: 4px; position: absolute; top: 20px; right: 20px;
     padding: 14px 18px; border-radius: 16px;
     background: rgba(6, 17, 42, .72); border: 1px solid rgba(255, 255, 255, .16);
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -229,15 +229,17 @@ p, h1, h2, h3 { margin: 0; }
   .hero__badge b { font: 400 22px/1 var(--font-head); text-transform: uppercase; color: var(--gold); }
 }
 /* Низкие экраны телефонов (iPhone SE и т.п.): всё должно влезть до кнопки */
-@media (max-width: 559px) and (max-height: 700px) {
+/* Телефоны: размеры зависят только от ширины экрана. От высоты — нельзя:
+   она меняется, когда браузер прячет панели, и вёрстка начинает прыгать */
+@media (max-width: 559px) {
   .header__in { height: 62px; }
   .hero .chips { display: none; }
   .hero__text { gap: 10px; }
-  .hero__title { font-size: 26px; }
+  .hero__title { font-size: clamp(26px, 7.4vw, 31px); }
   .hero__sub { font-size: 14px; }
   .offer { padding: 10px 0 12px; }
-  .offer__price { font-size: 32px; }
-  .btn { min-height: 48px; }
+  .offer__price { font-size: 34px; }
+  .btn { min-height: 50px; }
   .hero__btns { gap: 8px; }
 }
 
@@ -336,13 +338,14 @@ p, h1, h2, h3 { margin: 0; }
 /* 4. Что получает команда — карусель фото с матчей */
 .carousel { position: relative; margin-bottom: 36px; }
 .carousel__track {
-  display: grid; grid-auto-flow: column; grid-auto-columns: 100%;
+  display: grid; grid-auto-flow: column; grid-auto-columns: 88%;
   column-gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
   border-radius: 22px; scrollbar-width: none;
 }
 .carousel__track::-webkit-scrollbar { display: none; }
 .carousel__slide { scroll-snap-align: start; }
-.carousel__slide .photo { aspect-ratio: 4 / 3; border-radius: 22px; }
+/* фото в родном формате 3:2 — без обрезки */
+.carousel__slide .photo { aspect-ratio: 3 / 2; border-radius: 22px; }
 .carousel__btn {
   position: absolute; top: calc(50% - 32px); z-index: 2;
   width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
@@ -360,7 +363,7 @@ p, h1, h2, h3 { margin: 0; }
 }
 .carousel__dots button.is-on { width: 26px; background: var(--gold); }
 @media (min-width: 760px) {
-  .carousel__slide .photo { aspect-ratio: 16 / 8; }
+  .carousel__track { grid-auto-columns: 70%; column-gap: 16px; }
   .carousel__btn { display: grid; }
 }
 .benefits { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
@@ -477,9 +480,10 @@ p, h1, h2, h3 { margin: 0; }
   padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
   background: linear-gradient(0deg, rgba(6, 17, 42, .95) 60%, rgba(6, 17, 42, 0));
   transform: translateY(110%);
-  transition: transform .3s ease;
+  visibility: hidden;   /* не просвечивает сквозь прозрачную панель браузера в iOS */
+  transition: transform .3s ease, visibility 0s linear .3s;
 }
-.sticky.is-on { transform: none; }
+.sticky.is-on { transform: none; visibility: visible; transition: transform .3s ease, visibility 0s; }
 @media (min-width: 900px) { .sticky { display: none; } }
 
 /* ---------- Мягкое появление блоков ---------- */

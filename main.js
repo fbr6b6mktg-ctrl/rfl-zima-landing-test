@@ -144,9 +144,12 @@
   }).join('');
 
   // Галерея манежей и фото с матчей: превью name.webp, крупно — name-full.webp
-  function photoBtn(name, caption, extra) {
-    return '<button type="button" class="photo" data-full="assets/img/' + esc(name) + '-full.webp" data-cap="' + esc(caption) + '">' +
-      '<img src="assets/img/' + esc(name) + '.webp" alt="' + esc(caption) + '" loading="lazy" decoding="async">' +
+  // sizes — ширина фото на экране: браузер сам выберет превью или крупную версию
+  function photoBtn(name, caption, extra, sizes) {
+    var n = 'assets/img/' + esc(name);
+    var set = sizes ? ' srcset="' + n + '.webp 900w, ' + n + '-full.webp 1800w" sizes="' + sizes + '"' : '';
+    return '<button type="button" class="photo" data-full="' + n + '-full.webp" data-cap="' + esc(caption) + '">' +
+      '<img src="' + n + '.webp"' + set + ' alt="' + esc(caption) + '" loading="lazy" decoding="async">' +
       (extra || '') + '</button>';
   }
   $('#gallery-list').innerHTML = C.gallery.items.map(function (g) {
@@ -158,7 +161,7 @@
   // Карусель фото с матчей: свайп, стрелки и точки
   var track = $('#match-photos');
   track.innerHTML = C.benefits.photos.map(function (m) {
-    return '<div class="carousel__slide">' + photoBtn(m.photo, m.alt) + '</div>';
+    return '<div class="carousel__slide">' + photoBtn(m.photo, m.alt, '', '(min-width: 760px) 840px, 88vw') + '</div>';
   }).join('');
   $('#match-dots').innerHTML = C.benefits.photos.map(function (m, i) {
     return '<button type="button" aria-label="Фото ' + (i + 1) + '"></button>';
