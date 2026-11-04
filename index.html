@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- ТЕСТОВАЯ ВЕРСИЯ: не индексировать -->
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Защита: браузер загрузит скрипты и окна только с этого сайта, из Яндекс Метрики и Яндекс Форм -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://mc.yandex.ru https://mc.yandex.com https://yastatic.net https://forms.yandex.ru; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://mc.yandex.ru https://mc.yandex.com; font-src 'self'; connect-src 'self' https://mc.yandex.ru https://mc.yandex.com wss://mc.yandex.ru wss://mc.yandex.com https://forms.yandex.ru; frame-src https://forms.yandex.ru https://mc.yandex.ru https://mc.yandex.com blob:; child-src blob: https://mc.yandex.ru https://mc.yandex.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Зимний сезон РФЛ 2026/27 — любительская лига 5×5 в Москве</title>
+  <meta name="description" content="Любительская лига по мини-футболу 5×5 в тёплых манежах Перово и Марьино. Старт 5 декабря. Собирай команду и оставляй заявку.">
+  <meta name="theme-color" content="#06112A">
+  <meta property="og:title" content="Зимний сезон РФЛ. Собирай команду — старт 5 декабря">
+  <meta property="og:description" content="Любительская лига 5×5 в тёплых манежах Перово и Марьино.">
+  <meta property="og:image" content="assets/img/hero-1000.webp">
+  <link rel="icon" href="assets/img/logo.webp" type="image/webp">
+
+  <link rel="preload" href="assets/fonts/russo-one-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/roboto-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/img/hero-1000.webp" imagesrcset="assets/img/hero-1000.webp 1000w, assets/img/hero-1920.webp 1920w" imagesizes="(min-width: 960px) 560px, 100vw" fetchpriority="high">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Все тексты и настройки — в config.js. Яндекс Метрика подключается в main.js -->
+  <script src="config.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <noscript>
+    <img src="https://mc.yandex.ru/watch/108695168" style="position:absolute;left:-9999px" alt="">
+    <p class="noscript">Включите JavaScript, чтобы увидеть страницу. Или позвоните: <a href="tel:+79250031188">8 (925) 003-11-88</a></p>
+  </noscript>
+
+  <!-- 0. Шапка -->
+  <header class="header">
+    <div class="wrap header__in">
+      <a class="header__logo" href="./" aria-label="РФЛ Москва">
+        <img src="assets/img/logo.webp" width="360" height="162" alt="РФЛ — Регулярная футбольная лига, Москва" fetchpriority="high">
+      </a>
+      <a class="header__phone" data-tel data-phone-text href="#"></a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Первый экран -->
+    <section class="hero rings" id="hero">
+      <div class="wrap hero__in">
+        <div class="hero__text">
+          <div class="chips" id="hero-chips"></div>
+          <p class="eyebrow" data-c="hero.eyebrow"></p>
+          <h1 class="hero__title" data-t="hero.title"></h1>
+          <p class="hero__sub" data-c="hero.subtitle"></p>
+          <div class="offer" data-discount-only>
+            <span class="label" data-c="earlyTeams"></span>
+            <div class="offer__row">
+              <span class="offer__price" data-price></span>
+              <s class="offer__old" data-old-price></s>
+            </div>
+            <span class="offer__deadline" data-c="deadline"></span>
+            <div class="countdown" id="countdown" hidden>
+              <span class="label" data-c="countdownLabel"></span>
+              <div class="countdown__cells" aria-live="off">
+                <span><b id="cd-d">00</b>дн</span>
+                <span><b id="cd-h">00</b>ч</span>
+                <span><b id="cd-m">00</b>мин</span>
+                <span><b id="cd-s">00</b>сек</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero__btns">
+            <a class="btn btn--main" href="#zayavka" data-c="hero.ctaMain"></a>
+            <a class="btn btn--ghost" data-vk target="_blank" rel="noopener" data-c="hero.ctaVk"></a>
+          </div>
+        </div>
+        <div class="hero__visual">
+        <picture class="hero__photo">
+          <img src="assets/img/hero-1000.webp"
+               srcset="assets/img/hero-1000.webp 1000w, assets/img/hero-1920.webp 1920w"
+               sizes="(min-width: 960px) 560px, 100vw" width="1920" height="1280"
+               alt="Матч любительской лиги РФЛ в манеже" fetchpriority="high">
+        </picture>
+          <img class="hero__photo2" src="assets/img/hero-teams.webp" width="900" height="600" alt="Команды РФЛ перед матчем в манеже РФЛ Арена" loading="lazy" decoding="async">
+          <div class="hero__badge"><span class="label" data-c="hero.photoBadgeLabel"></span><b data-c="hero.photoBadge"></b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Бегущая строка -->
+    <div class="ticker" aria-hidden="true"><div class="ticker__track" id="ticker"></div></div>
+
+    <!-- 2. Два дивизиона -->
+    <section class="section" id="divisions">
+      <div class="wrap">
+        <h2 class="h2 reveal" data-t="divisions.title"></h2>
+        <div class="divs" id="divs-list"></div>
+      </div>
+    </section>
+
+    <!-- 2а. Манежи изнутри -->
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <h2 class="h2 reveal" data-t="gallery.title"></h2>
+      </div>
+      <div class="gallery" id="gallery-list"></div>
+    </section>
+
+    <!-- 3. Условия -->
+    <section class="section rings" id="terms">
+      <div class="wrap">
+        <h2 class="h2 reveal" data-t="terms.title"></h2>
+        <div class="tiles" id="terms-list"></div>
+      </div>
+    </section>
+
+    <!-- 4. Что получает команда -->
+    <section class="section" id="benefits">
+      <div class="wrap">
+        <h2 class="h2 reveal" data-t="benefits.title"></h2>
+        <div class="carousel reveal">
+          <div class="carousel__track" id="match-photos"></div>
+          <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Предыдущее фото">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button class="carousel__btn carousel__btn--next" type="button" aria-label="Следующее фото">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <div class="carousel__dots" id="match-dots"></div>
+        </div>
+        <ul class="benefits" id="benefits-list"></ul>
+      </div>
+    </section>
+
+    <!-- 5. Как записаться -->
+    <section class="section" id="steps">
+      <div class="wrap">
+        <h2 class="h2 reveal" data-t="steps.title"></h2>
+        <ol class="steps" id="steps-list"></ol>
+      </div>
+    </section>
+
+    <!-- 6. Форма заявки -->
+    <section class="section rings" id="zayavka">
+      <div class="wrap form-wrap">
+        <div class="form-head reveal">
+          <h2 class="h2" data-t="form.title"></h2>
+          <p class="lead" data-c="form.subtitle"></p>
+        </div>
+
+        <div class="form-card reveal" id="form-box">
+          <!-- Яндекс Форма подставляется сюда из config.js (yandexFormUrl), вместе с UTM-метками -->
+          <div class="form-off" id="form-off" hidden>
+            <p data-c="form.unavailable"></p>
+            <div class="form-off__btns">
+              <a class="btn btn--main" data-tel>Позвонить</a>
+              <a class="btn btn--dark" data-vk target="_blank" rel="noopener" data-c="hero.ctaVk"></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-side reveal">
+          <div class="form-alt">
+            <a class="link-vk" data-vk target="_blank" rel="noopener" data-c="form.orVk"></a>
+            <p><span data-c="form.orPhone"></span> <a data-tel data-phone-text></a></p>
+          </div>
+          <p class="label" data-c="socialsTitle"></p>
+          <div class="socials">
+            <a class="social" data-link="vkGroupUrl" target="_blank" rel="noopener" aria-label="VK лиги"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.8 17.5c-5.5 0-8.6-3.8-8.7-10h2.8c.1 4.6 2.1 6.5 3.7 6.9V7.5h2.6v3.9c1.6-.2 3.3-2 3.8-3.9h2.6c-.4 2.4-2.2 4.2-3.4 4.9 1.2.6 3.2 2.1 3.9 5.1h-2.9c-.6-1.9-2.1-3.3-4-3.5v3.5h-.4z"/></svg><span data-c="vkGroupText"></span></a>
+            <a class="social" data-link="telegramUrl" target="_blank" rel="noopener" aria-label="Telegram лиги"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 4.3 3.4 10.9c-1.2.5-1.1 1.2-.2 1.5l4.4 1.4 1.7 5.2c.2.6.4.8.8.8s.6-.2.9-.5l2.1-2.1 4.4 3.3c.8.4 1.4.2 1.6-.8l2.9-13.6c.3-1.2-.5-1.8-1.4-1.4zM9.8 13.4l7.9-5-6.1 5.7-.3 3-1.5-3.7z"/></svg><span data-c="telegramText"></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 7. Подвал -->
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <img class="footer__logo" src="assets/img/logo.webp" width="360" height="162" alt="РФЛ Москва" loading="lazy">
+      <div class="footer__contacts">
+        <a data-tel data-phone-text></a>
+        <a data-email></a>
+      </div>
+      <nav class="footer__links" aria-label="Мы в сети">
+        <a data-link="siteUrl" target="_blank" rel="noopener">rfll.ru</a>
+        <div class="socials">
+            <a class="social" data-link="vkGroupUrl" target="_blank" rel="noopener" aria-label="VK лиги"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.8 17.5c-5.5 0-8.6-3.8-8.7-10h2.8c.1 4.6 2.1 6.5 3.7 6.9V7.5h2.6v3.9c1.6-.2 3.3-2 3.8-3.9h2.6c-.4 2.4-2.2 4.2-3.4 4.9 1.2.6 3.2 2.1 3.9 5.1h-2.9c-.6-1.9-2.1-3.3-4-3.5v3.5h-.4z"/></svg><span data-c="vkGroupText"></span></a>
+            <a class="social" data-link="telegramUrl" target="_blank" rel="noopener" aria-label="Telegram лиги"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.6 4.3 3.4 10.9c-1.2.5-1.1 1.2-.2 1.5l4.4 1.4 1.7 5.2c.2.6.4.8.8.8s.6-.2.9-.5l2.1-2.1 4.4 3.3c.8.4 1.4.2 1.6-.8l2.9-13.6c.3-1.2-.5-1.8-1.4-1.4zM9.8 13.4l7.9-5-6.1 5.7-.3 3-1.5-3.7z"/></svg><span data-c="telegramText"></span></a>
+          </div>
+      </nav>
+      <p class="footer__legal">
+        Организатор: <span data-c="orgName"></span>, ИНН <span data-c="orgInn"></span><br>
+        <a data-privacy target="_blank" rel="noopener">Политика обработки персональных данных</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Просмотр фото крупно -->
+  <dialog class="viewer" id="viewer" aria-label="Фото крупно">
+    <img id="viewer-img" alt="">
+    <p class="viewer__cap" id="viewer-cap"></p>
+    <button class="viewer__close" type="button" aria-label="Закрыть">×</button>
+  </dialog>
+
+  <!-- Липкая кнопка на телефоне -->
+  <div class="sticky" id="sticky" aria-hidden="true">
+    <a class="btn btn--main btn--wide" href="#zayavka" tabindex="-1" data-c="stickyCta"></a>
+  </div>
+</body>
+</html>
