@@ -511,3 +511,13 @@ p, h1, h2, h3 { margin: 0; }
 }
 
 .noscript { padding: 20px; text-align: center; }
+
+/* ---------- Приём заявок закрыт ---------- */
+/* Включается сам по дате applicationsCloseAt из config.js */
+.is-closed .offer .label,
+.is-closed .offer__row,
+.is-closed [data-vk],
+.is-closed #form-box,
+.is-closed .sticky { display: none !important; }
+.is-closed .offer__deadline { font-size: 20px; text-align: left; }
+.is-closed .offer { grid-template-columns: 1fr; }

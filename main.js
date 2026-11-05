@@ -21,6 +21,18 @@
   });
   var price = C.discountActive ? C.priceEarly : C.priceFull;
 
+  /* ---------- Приём заявок закрыт? ---------- */
+  // Сайт сам переключается по дате applicationsCloseAt или по флагу applicationsClosed
+  var closeAt = new Date(C.applicationsCloseAt).getTime();
+  var isClosed = C.applicationsClosed || Date.now() >= closeAt;
+  if (isClosed) {
+    document.documentElement.classList.add('is-closed');
+    C.deadline = C.closed.badge;
+    C.hero.ctaMain = C.closed.cta;
+    C.form.title = C.closed.title;
+    C.form.subtitle = C.closed.text;
+  }
+
   /* ---------- Яндекс Метрика: цели ---------- */
 
   function goal(name) {
@@ -68,18 +80,23 @@
     return '<span class="chip">' + esc(c) + '</span>';
   }).join('') + (C.hero.chipDark ? '<span class="chip chip--dark">' + esc(C.hero.chipDark) + '</span>' : '');
 
-  $$('[data-price]').forEach(function (el) { el.innerHTML = rub(C.priceEarly); });
+  $$('[data-price]').forEach(function (el) { el.innerHTML = rub(price); });
+  $('#offer-label').textContent = C.discountActive ? C.earlyTeams : C.priceLabelFull;
 
   // Короткие факты: строка под первым экраном и вертикальная полоса слева
   $('#facts').innerHTML = C.hero.facts.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
   $('#side-strip').innerHTML = C.hero.facts.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
 
   // Обратный отсчёт до конца приёма заявок
-  var cdEnd = C.discountActive && C.countdownTo ? new Date(C.countdownTo).getTime() : NaN;
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function tickCountdown() {
-    var left = Math.floor((cdEnd - Date.now()) / 1000);
-    if (!(left > 0)) { $('#countdown').hidden = true; return false; }
+    var left = isClosed ? 0 : Math.floor((closeAt - Date.now()) / 1000);
+    if (!(left > 0)) {
+      $('#countdown').hidden = true;
+      // время вышло, пока страница открыта — перезагружаем в режим «заявки закрыты»
+      if (!isClosed) location.reload();
+      return false;
+    }
     $('#countdown').hidden = false;
     $('#cd-d').textContent = pad(Math.floor(left / 86400));
     $('#cd-h').textContent = pad(Math.floor(left % 86400 / 3600));
@@ -250,7 +267,9 @@
   var params = new URLSearchParams(location.search);
   var formUrl = (C.yandexFormUrl || '').trim();
 
-  if (!formUrl) {
+  if (isClosed) {
+    // приём заявок закрыт — форму не загружаем
+  } else if (!formUrl) {
     $('#form-off').hidden = false;
   } else {
     var src = new URL(formUrl);
